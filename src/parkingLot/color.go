@@ -43,6 +43,6 @@ func StringToColor(color string) Color {
 	return s2c[color]
 }
 
-func (c Color) ColorToString() string {
+func (c Color) String() string {
 	return c2s[c]
 }
