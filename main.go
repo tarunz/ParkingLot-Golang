@@ -20,7 +20,6 @@ func main() {
 		if err != nil {
 			fmt.Printf("File does not exist: %s\n", arg[0])
 		} else {
-			defer file.Close()
 			scanner := bufio.NewScanner(file)
 			for scanner.Scan() {
 				// fmt.Println(scanner.Text())
@@ -30,6 +29,7 @@ func main() {
 				fmt.Println(err)
 			}
 		}
+		defer file.Close()
 	} else {
 		// Interactive Mode
 		for {
@@ -53,16 +53,18 @@ func processString(s string) {
 		n, err := strconv.Atoi(vals[1])
 		if err != nil {
 			fmt.Println("CREATE: Invalid value for number of slots.")
+		} else {
+			plot = pk.NewParkingLot(n)
 		}
-		plot = pk.NewParkingLot(n)
 	case "park":
 		plot.Park(vals[1], vals[2])
 	case "leave":
 		i, err := strconv.Atoi(vals[1])
 		if err != nil {
 			fmt.Println("LEAVE: Invalid value for slot number.")
+		} else {
+			plot.Leave(i)
 		}
-		plot.Leave(i)
 	case "status":
 		plot.Status()
 	case "registration_numbers_for_cars_with_colour":

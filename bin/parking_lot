@@ -19,7 +19,11 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 # Important: Above commands is just examples, please modify to suit your requirement as necessary
 
 if [[ $(uname -s) == CYGWIN* ]];then
-    $DIR/../target/main.exe $1
+    if [ -z "$1" ];then
+        $DIR/../target/main.exe
+    else
+        $DIR/../target/main.exe "$(cygpath -w $1)"
+    fi
 else 
     $DIR/../target/main $1
 fi

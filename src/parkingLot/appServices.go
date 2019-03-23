@@ -30,14 +30,14 @@ func (p *ParkingLot) Leave(slotNo int) {
 }
 
 func (p ParkingLot) Status() {
-	fmt.Printf("Slot No.\tRegistration No\t\tColour\n")
+	fmt.Printf("Slot No.    Registration No    Colour\n")
 	n := p.Capacity
 	regNo := ""
 	var color Color
 	for i := 0; i < n; i++ {
 		if p.Slots[i].Occupied {
 			regNo, color = p.Slots[i].vehicleDetails()
-			fmt.Printf("%d\t\t%s\t\t%s\n", i+1, regNo, color)
+			fmt.Printf("%d           %s      %s\n", i+1, regNo, color)
 		}
 	}
 }
