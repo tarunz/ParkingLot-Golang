@@ -1,1 +1,4 @@
 target/
+go/
+go1.9.3.linux-amd64.tar.gz
+go1.12.1.linux-386.tar.gz
