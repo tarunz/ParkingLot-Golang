@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Add script to:
 # * Install dependencies
 # * Build/Compile
@@ -5,3 +6,11 @@
 #
 # After this is run, bin/parking_lot
 # should Just Work.
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+if [[ $(uname -s) == CYGWIN* ]];then
+    go build -o "$(cygpath -w $DIR/../target/main.exe)" "$(cygpath -w $DIR/../main.go)"
+else 
+    go build -o $DIR/../target/main $DIR/../main.go
+fi

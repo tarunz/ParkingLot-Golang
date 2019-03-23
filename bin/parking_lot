@@ -17,3 +17,9 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 #   ruby $DIR/../main.rb $1
 # 
 # Important: Above commands is just examples, please modify to suit your requirement as necessary
+
+if [[ $(uname -s) == CYGWIN* ]];then
+    $DIR/../target/main.exe $1
+else 
+    $DIR/../target/main $1
+fi
