@@ -9,15 +9,17 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-if [[ $(which go ; echo $?) == 1 ]];then
-    curl -O https://storage.googleapis.com/golang/go1.12.1.linux-386.tar.gz
-    tar -xvf go1.12.1.linux-386.tar.gz
-    export GOPATH=$DIR/../go
-    export PATH=$GOPATH/bin:$PATH
-fi
+# if [[ $(which go ; echo $?) == 1 ]];then
+#     curl -O https://storage.googleapis.com/golang/go1.12.1.linux-386.tar.gz
+#     tar -xvf go1.12.1.linux-386.tar.gz
+#     export GOPATH=$DIR/../go
+#     export PATH=$GOPATH/bin:$PATH
+# fi
 
 if [[ $(uname -s) == CYGWIN* ]];then
     go build -o "$(cygpath -w $DIR/../target/main.exe)" "$(cygpath -w $DIR/../main.go)"
 else 
     go build -o $DIR/../target/main $DIR/../main.go
 fi
+
+# go test $DIR/../.../ -v

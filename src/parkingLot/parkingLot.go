@@ -7,11 +7,13 @@ type ParkingLot struct {
 	FreeSlots int
 }
 
+// Takes car and slotNo. as input and parks car in it.
 func (p *ParkingLot) parkCar(c Car, i int) {
 	p.Slots[i].carToslot(c)
 	p.FreeSlots--
 }
 
+// Returns lowest indexed slotNo. if any, otherwise returns -1
 func (p ParkingLot) availableSlot() int {
 	if p.FreeSlots > 0 {
 		n := p.Capacity
